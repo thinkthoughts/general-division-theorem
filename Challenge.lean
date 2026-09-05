@@ -1,3 +1,3 @@
-module  -- shake: keep-all --deprecated_module: ignore
+module -- shake: keep-all --deprecated_module: ignore
 
-public import Challenge.Basic
+public import Challenge.GeneralDivisionTheorem

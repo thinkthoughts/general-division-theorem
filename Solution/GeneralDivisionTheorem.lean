@@ -1,6 +1,6 @@
 module
 
-public import ZetaZeros.GDT
+public import GeneralDivisorTheorem.Basic
 public import Mathlib.Data.Nat.Squarefree
 
 @[expose] public section

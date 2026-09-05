@@ -6,7 +6,7 @@ Residue Conditioning", Draft v3.3, Theorem 3 (§2.2).
 -/
 module
 
-public import ZetaZeros.GDT
+public import GeneralDivisorTheorem.Basic
 
 /-! # The General Divisor Theorem (Theorem 3)
 
