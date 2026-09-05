@@ -9,7 +9,7 @@ namespace GDT.Challenge
 
 open GDT
 
-theorem gdt_empty {N m L : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
+theorem gdt_empty {N m L : ℕ} (_hN : 0 < N) (hm : 0 < m) {a : ℤ}
     (h : ¬ Admissible N m a) :
     S N L m a = ∅ := by
   have h' : Nat.gcd a.natAbs (d N m) ≠ 1 := h
@@ -83,7 +83,7 @@ lemma prod_primes_squarefree {s : Finset ℕ} (hs : ∀ p ∈ s, p.Prime) :
     Squarefree (∏ p ∈ s, p) := by
   induction s using Finset.induction with
   | empty =>
-      simpa using Nat.squarefree_one
+      simp
   | insert a s ha ih =>
       rw [Finset.prod_insert ha]
       have hpa : a.Prime :=
@@ -172,7 +172,7 @@ lemma coprime_of_modEq_natAbs {k : ℕ} {a : ℤ} {e : ℕ}
   exact absurd (Nat.le_of_dvd one_pos hcontra) (not_le.mpr hp.one_lt)
 
 lemma gcd_with_N_iff_gcd_with_R
-    {N m k : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
+    {N m k : ℕ} (hN : 0 < N) (_hm : 0 < m) {a : ℤ}
     (ha : Admissible N m a)
     (hk : (k : ℤ) ≡ a [ZMOD (m : ℤ)]) :
     Nat.gcd k N = 1 ↔ Nat.gcd k (R N m) = 1 := by
@@ -451,7 +451,7 @@ lemma exists_repr_mod_R {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ} {r : ℕ
       _ = r := Nat.mod_eq_of_lt hr
 
 /-- Two canonical-window representatives agreeing mod `m` and mod `R` are equal. -/
-lemma repr_unique {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ} {n1 n2 : ℕ}
+lemma repr_unique {N m : ℕ} (hN : 0 < N) (_hm : 0 < m) {a : ℤ} {n1 n2 : ℕ}
     (h1 : n1 < Tmin N m) (h2 : n2 < Tmin N m)
     (hmod1 : (n1 : ℤ) ≡ a [ZMOD (m : ℤ)])
     (hmod2 : (n2 : ℤ) ≡ a [ZMOD (m : ℤ)])
@@ -515,7 +515,7 @@ lemma exists_accepted {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
 
   exact (gcd_with_N_iff_gcd_with_R hN hm h hcongm).mpr hgcdR
 
-lemma primeFactors_forall_dvd_imp_dvd {n t : ℕ} (hn : 0 < n)
+lemma primeFactors_forall_dvd_imp_dvd {n t : ℕ} (_hn : 0 < n)
     (hall : ∀ p ∈ n.primeFactors, p ∣ t) : rad n ∣ t := by
   unfold rad
   have aux : ∀ s : Finset ℕ, s ⊆ n.primeFactors →
@@ -654,7 +654,7 @@ lemma rad_eq_self_of_squarefree {n : ℕ} (_hn : 0 < n) (hsf : Squarefree n) :
   exact Nat.prod_primeFactors_of_squarefree hsf
 
 theorem gdt_minimal_period {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
-    (h : Admissible N m a) {t : ℕ} (ht : 0 < t) (hp : IsPeriod N m a t) :
+    (h : Admissible N m a) {t : ℕ} (_ht : 0 < t) (hp : IsPeriod N m a t) :
     Tmin N m ∣ t := by
   obtain ⟨n0, hn0⟩ := exists_accepted hN hm h
 
@@ -757,7 +757,7 @@ theorem gdt_minimal_period {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
   exact hmR
 
 lemma canonical_window_card_eq_range_coprime {N m : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
-    (h : Admissible N m a) :
+    (_h : Admissible N m a) :
     ((Finset.Ico 0 (Tmin N m)).filter
         (fun (n : ℕ) => (n : ℤ) ≡ a [ZMOD (m : ℤ)] ∧ Nat.gcd n (R N m) = 1)).card =
       ((Finset.range (R N m)).filter
@@ -827,10 +827,10 @@ lemma S_eq_filter_Ico (N L m : ℕ) (a : ℤ) :
   apply Finset.ext
   intro n
   simp only [Finset.mem_filter, Finset.mem_Icc, Finset.mem_Ico]
-  simp [Nat.lt_succ_iff]
+  simp
 
 theorem gdt_density {N m q s : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
-    (h : Admissible N m a) (hs : s < Tmin N m) :
+    (h : Admissible N m a) (_hs : s < Tmin N m) :
     (S N (q * Tmin N m + s) m a).card =
       q * Nat.totient (R N m) + (S N s m a).card := by
   induction q with
@@ -866,7 +866,7 @@ theorem gdt_density {N m q s : ℕ} (hN : 0 < N) (hm : 0 < m) {a : ℤ}
     rw [hfirst, hsecond]
     ring
 
-lemma rad_factorization_eq_one {n : ℕ} (hn : 0 < n) {p : ℕ}
+lemma rad_factorization_eq_one {n : ℕ} (_hn : 0 < n) {p : ℕ}
     (hp : p ∈ n.primeFactors) :
     (rad n).factorization p = 1 := by
   have hsf : Squarefree (rad n) := rad_squarefree n
@@ -886,7 +886,7 @@ lemma rad_factorization_eq_one {n : ℕ} (hn : 0 < n) {p : ℕ}
   omega
 
 /-- Exponent-blindness: `φ(n)/n` depends only on `rad n`. -/
-lemma totient_rad_mul (n : ℕ) (hn : 0 < n) :
+lemma totient_rad_mul (n : ℕ) (_hn : 0 < n) :
     n * Nat.totient (rad n) = rad n * Nat.totient n := by
   have hpf : (rad n).primeFactors = n.primeFactors := by
     unfold rad
@@ -930,7 +930,7 @@ lemma totient_rad_mul (n : ℕ) (hn : 0 < n) :
     _ = rad n * Nat.totient n := by
             rw [mul_comm]
 
-theorem gdt_correction_factor {N m : ℕ} (hN : 0 < N) (hm : 0 < m) :
+theorem gdt_correction_factor {N m : ℕ} (hN : 0 < N) (_hm : 0 < m) :
     Nat.totient (R N m) * N * Nat.totient (d N m) =
       d N m * R N m * Nat.totient N := by
   have hcop : Nat.Coprime (d N m) (R N m) :=
