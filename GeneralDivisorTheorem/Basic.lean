@@ -1,8 +1,19 @@
+/-
+Copyright (c) 2026 thinkthoughts. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+-/
+
 module
 
 public import Mathlib.Data.Nat.Totient
 public import Mathlib.Data.Nat.Factorization.Basic
 public import Mathlib.Data.Finset.Basic
+
+/-!
+# General Divisor Theorem: Core Definitions
+
+Core definitions used by the formalization of the General Divisor Theorem.
+-/
 
 @[expose] public section
 
