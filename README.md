@@ -1,47 +1,86 @@
-[![](logo.svg)](https://axiommath.ai/)
+# General Division Theorem
 
-# Simple zeros of the Riemann zeta function on the critical line
+Lean formalization and verification artifact for the General Divisor Theorem.
 
-This is a Lean formalization of Lamzouri's new proof that more than `2/3` of the zeros of the Riemann zeta function are simple and on the critical line.
+The theorem studies integers satisfying a residue condition together with coprimality to a modulus, and gives an exact dichotomy, minimal period, count per period, density formula, and correction factor.
 
-## Main Results
+## Theorem Source
 
-* A Hilbert-space lower bound on the number of real points of multiplicity one in a finite conjugation-invariant multiset, and on the number of its distinct points.
-* Beyond some height, more than `67.25%` of the non-trivial zeros are simple and lie on the critical line, assuming the Riemann–von Mangoldt formula and the Baluyot–Goldston–Suriajaya–Turnage-Butterbaugh pair-correlation formula.
-* Beyond some height, more than `83.625%` of the non-trivial zeros are distinct, under those same two assumptions.
+The mathematical source is in:
 
-See [§Formal Challenge](#formal-challenge) for a formal certificate.
+* `General_Division_Theorem/divisor.pdf`
+* `General_Division_Theorem/README.md`
 
-## Dependencies
+## Lean Formalization
 
-This depends on [Mathlib](https://github.com/leanprover-community/mathlib4).
+The core definitions are in:
+
+* `GeneralDivisorTheorem/Basic.lean`
+
+The top-level Lean library is:
+
+* `GeneralDivisorTheorem.lean`
+
+Build the formalization with:
+
+```text
+lake build
+```
 
 ## Formal Challenge
 
-A formal challenge file certifying that this repository does formalize the results
-claimed above is located at [Challenge/Basic.lean](Challenge/Basic.lean). This file only
-depends on the dependency above. It contains formal statements of
-[§Main Results](#main-results) with `sorry` as proof.
+The repository contains a seven-theorem Challenge/Solution pair.
 
-This repository can be verified against the formal challenge with the Lean
-comparator on a Linux machine. First, follow the instructions in
-https://github.com/leanprover/comparator to install `comparator`. Then, run the following command:
+Challenge:
 
-```
-lake env comparator Comparator/comparator.json
+```text
+Challenge/GeneralDivisionTheorem.lean
 ```
 
-This repository has been locally verified with the comparator.
+Solution:
 
-## General Divisor Theorem Benchmark
+```text
+Solution/GeneralDivisionTheorem.lean
+```
 
-This repository also contains a Lean formalization benchmark for the
-General Divisor Theorem.
+The Challenge contains the theorem statements with `sorry` proof placeholders.
 
-See [General_Divisor_Theorem/README.md](General_Divisor_Theorem/README.md)
-for the theorem source, benchmark specification, completed solution, and
-verification instructions.
+The Solution proves the same seven statements with no `sorry`:
 
-The benchmark contains seven theorem statements in
-`Challenge/GeneralDivisionTheorem.lean` and a complete proof in
-`Solution/GeneralDivisionTheorem.lean` with no `sorry`.
+1. `gdt_empty`
+2. `gdt_periodic`
+3. `gdt_minimal_period`
+4. `gdt_count_per_period`
+5. `gdt_density`
+6. `gdt_correction_factor`
+7. `general_divisor_theorem`
+
+## Comparator Verification
+
+The comparator specification is:
+
+```text
+Comparator/general_divisor_theorem.json
+```
+
+With the Lean comparator installed, run:
+
+```text
+lake env comparator Comparator/general_divisor_theorem.json
+```
+
+The permitted axioms are:
+
+* `propext`
+* `Quot.sound`
+* `Classical.choice`
+
+## Dependencies
+
+This project uses [Mathlib](https://github.com/leanprover-community/mathlib4) with the Lean toolchain specified by the repository.
+
+## Status
+
+The General Divisor Theorem library, Challenge, and Solution build successfully.
+
+Remaining Lean warnings are tracked as cleanup work toward the v1.0 verification certificate.
