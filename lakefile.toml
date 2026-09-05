@@ -15,7 +15,7 @@ scope = "leanprover-community"
 rev = "v4.34.0-rc2"
 
 [[lean_lib]]
-name = "ZetaZeros"
+name = "GeneralDivisorTheorem"
 
 # The comparator pair. Deliberately NOT in defaultTargets: `Challenge` carries a
 # permanent `sorry` (its statements are the artifact), and `lake lint` derives its
