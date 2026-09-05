@@ -1,7 +1,20 @@
+/-
+Copyright (c) 2026 Dan Hawkley. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Dan Hawkley
+-/
+
 module
 
 public import GeneralDivisorTheorem.Basic
 public import Mathlib.Data.Nat.Squarefree
+
+/-!
+# General Divisor Theorem: Completed Solution
+
+Completed Lean proofs for the seven theorem statements in
+`Challenge/GeneralDivisionTheorem.lean`.
+-/
 
 @[expose] public section
 
