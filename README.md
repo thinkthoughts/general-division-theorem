@@ -6,22 +6,17 @@ The theorem studies integers satisfying a residue condition together with coprim
 
 ## Theorem Source
 
-The mathematical source is in:
+The mathematical source is kept separately from the Lean library in:
 
 * `General_Division_Theorem/divisor.pdf`
 * `General_Division_Theorem/README.md`
 
 ## Lean Formalization
 
-The core definitions are in:
+The Lean library uses the module directory:
 
 * `GeneralDivisorTheorem/Basic.lean`
 
-The top-level Lean library is:
+The top-level Lean module is:
 
 * `GeneralDivisorTheorem.lean`
-
-Build the formalization with:
-
-```text
-lake build
