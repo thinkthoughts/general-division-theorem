@@ -1,4 +1,4 @@
-# General Division Theorem
+# General Divisor Theorem
 
 Lean formalization and verification artifact for the General Divisor Theorem.
 
