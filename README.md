@@ -8,8 +8,8 @@ The theorem studies integers satisfying a residue condition together with coprim
 
 The mathematical source is kept separately from the Lean library in:
 
-* `General_Division_Theorem/divisor.pdf`
-* `General_Division_Theorem/README.md`
+* `General_Divisor_Theorem/divisor.pdf`
+* `General_Divisor_Theorem/README.md`
 
 ## Lean Formalization
 
