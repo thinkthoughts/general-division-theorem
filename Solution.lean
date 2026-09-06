@@ -1,3 +1,3 @@
 module -- shake: keep-all --deprecated_module: ignore
 
-public import Solution.GeneralDivisionTheorem
+public import Solution.GeneralDivisorTheorem

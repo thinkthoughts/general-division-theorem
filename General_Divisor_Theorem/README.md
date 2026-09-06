@@ -18,10 +18,10 @@ produce a machine-checkable certificate.
 The benchmark separates the theorem statements from their completed
 proofs.
 
-- `Challenge/GeneralDivisionTheorem.lean`
+- `Challenge/GeneralDivisorTheorem.lean`
   contains seven theorem proof holes expressed with `sorry`.
 
-- `Solution/GeneralDivisionTheorem.lean`
+- `Solution/GeneralDivisorTheorem.lean`
   contains complete proofs of the seven theorem statements with no
   `sorry`.
 
@@ -40,13 +40,13 @@ The benchmark includes:
 The challenge file compiles with the seven expected `sorry` warnings:
 
 ```bash
-lake env lean Challenge/GeneralDivisionTheorem.lean
+lake env lean Challenge/GeneralDivisorTheorem.lean
 ```
 
 The completed solution compiles with no `sorry`:
 
 ```bash
-lake env lean Solution/GeneralDivisionTheorem.lean
+lake env lean Solution/GeneralDivisorTheorem.lean
 ```
 
 The complete project also builds successfully:

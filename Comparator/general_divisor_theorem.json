@@ -1,6 +1,6 @@
 {
-    "challenge_module": "Challenge.GeneralDivisionTheorem",
-    "solution_module": "Solution.GeneralDivisionTheorem",
+    "challenge_module": "Challenge.GeneralDivisorTheorem",
+    "solution_module": "Solution.GeneralDivisorTheorem",
     "theorem_names": [
         "GDT.Challenge.gdt_empty",
         "GDT.Challenge.gdt_periodic",

@@ -13,7 +13,7 @@ public import Mathlib.Data.Nat.Squarefree
 # General Divisor Theorem: Completed Solution
 
 Completed Lean proofs for the seven theorem statements in
-`Challenge/GeneralDivisionTheorem.lean`.
+`Challenge/GeneralDivisorTheorem.lean`.
 -/
 
 @[expose] public section
