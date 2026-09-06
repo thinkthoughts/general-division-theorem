@@ -60,13 +60,13 @@ The repository contains a seven-theorem Challenge/Solution pair.
 Challenge:
 
 ```text
-Challenge/GeneralDivisionTheorem.lean
+Challenge/GeneralDivisorTheorem.lean
 ```
 
 Solution:
 
 ```text
-Solution/GeneralDivisionTheorem.lean
+Solution/GeneralDivisorTheorem.lean
 ```
 
 The Challenge contains the theorem statements with `sorry` proof placeholders.
