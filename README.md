@@ -27,6 +27,32 @@ Build the formalization with:
 lake build
 ```
 
+## Repository Structure
+
+The similarly named source and Lean directories serve different purposes:
+
+```text
+General_Divisor_Theorem/
+```
+
+contains the mathematical source materials for the theorem.
+
+```text
+GeneralDivisorTheorem/
+```
+
+contains the Lean library modules.
+
+The root-level Lean files are top-level module entry points:
+
+```text
+GeneralDivisorTheorem.lean
+Challenge.lean
+Solution.lean
+```
+
+They import the corresponding Lean modules and are intentionally retained as part of the project structure.
+
 ## Formal Challenge
 
 The repository contains a seven-theorem Challenge/Solution pair.
@@ -71,9 +97,9 @@ The repository provides a one-command verification entry point:
 
 The script builds the project, checks the Challenge and completed Solution, and runs Lean Comparator.
 
-Comparator independently exports the Challenge and Solution declarations and checks the completed Solution with Lean's default kernel.
+Comparator exports the Challenge and Solution declarations and checks the completed Solution with Lean's default kernel.
 
-A successful verification ends with:
+A successful verification concludes with:
 
 ```text
 Running Lean default kernel on solution.
@@ -87,7 +113,9 @@ The permitted axioms are:
 * `Quot.sound`
 * `Classical.choice`
 
-Comparator requires compatible `comparator`, `lean4export`, and `landrun` binaries. `verify.sh` accepts their locations through:
+Comparator verification requires compatible `comparator`, `lean4export`, and `landrun` binaries.
+
+`verify.sh` accepts their locations through:
 
 ```text
 COMPARATOR_BIN
@@ -95,18 +123,34 @@ COMPARATOR_LEAN4EXPORT
 COMPARATOR_LANDRUN
 ```
 
-and otherwise uses the default local paths documented in the script.
+and otherwise uses the default local paths specified in the script.
 
 ## Dependencies
 
-This project uses Mathlib with the Lean toolchain specified by the repository.
+The project uses Mathlib with the Lean toolchain specified by the repository.
 
-Comparator verification additionally uses Lean Comparator, `lean4export`, and `landrun`.
+Comparator verification additionally uses:
 
-## Status
+* Lean Comparator
+* `lean4export`
+* `landrun`
 
-The General Divisor Theorem library and completed Solution build successfully.
+## Verification Status
 
-The seven-statement Challenge intentionally contains `sorry` placeholders; the corresponding Solution contains completed proofs.
+The General Divisor Theorem Lean library and completed Solution build successfully.
 
-The full Challenge/Solution pair passes Comparator verification and is accepted by Lean's default kernel.
+The seven-statement Challenge intentionally contains `sorry` proof placeholders. The corresponding Solution contains completed proofs for all seven statements.
+
+The full Challenge/Solution pair has passed Comparator verification, and the completed Solution has been accepted by Lean's default kernel.
+
+The verification pipeline has also been run successfully from a fresh repository clone.
+
+## Release
+
+The first release is:
+
+```text
+v1.0.0
+```
+
+It records the initial standalone formalization and verified Challenge/Solution artifact for the General Divisor Theorem.
